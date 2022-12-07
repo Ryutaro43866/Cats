@@ -17,14 +17,20 @@ Rails.application.routes.draw do
       resource :favorites, only: [:index, :create, :destroy]
       resources :item_comments, only: [:create, :destroy]
     end
+
     resources :customers, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
     end
+
     get '/customers/unsubscribe' => 'customers#unsubscribe'
     patch '/customers/withdraw' => 'customers#withdraw'
     get '/search', to: 'searches#search'
+
+    devise_scope :customer do
+      post 'customers/guest_sign_in', to: 'sessions#guest_sign_in'
+    end
   end
 
   namespace :admin do
