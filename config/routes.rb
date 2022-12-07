@@ -13,10 +13,10 @@ Rails.application.routes.draw do
   }
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: "homes#top"
+  get '/about' => 'homes#about', as: :about
 
   scope module: :public do
-    root to: "homes#top"
-    get '/about' => 'homes#about', as: :about
     resources :items do
       resource :favorites, only: [:index, :create, :destroy]
       resources :item_comments, only: [:create, :destroy]
