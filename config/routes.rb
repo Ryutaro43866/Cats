@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  root to: "homes#top"
+  get '/about' => 'homes#about', as: :about
+
   namespace :public do
     get 'homes/top'
     get 'homes/admin'
@@ -13,9 +16,6 @@ Rails.application.routes.draw do
   }
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: "homes#top"
-  get '/about' => 'homes#about', as: :about
-
   scope module: :public do
     resources :items do
       resource :favorites, only: [:index, :create, :destroy]
