@@ -1,0 +1,19 @@
+<%= form_with model:item do |f| %>
+  <div class="m-5 row">
+    <div class="col-12 col-md-8 my-3 mx-auto">
+      <%= f.file_field :image, accept: "image/*" %>
+    </div>
+
+    <div class="col-12 col-md-8 my-3 mx-auto">
+      <%= f.text_field :title, class: 'form-control', placeholder: 'タイトル' %>
+    </div>
+
+    <div class="col-12 col-md-8 my-3 mx-auto">
+      <%= f.text_area :introduction, class: 'form-control', placeholder: '説明' %>
+    </div>
+
+    <div class="col-12 col-md-8 my-3 mx-auto">
+      <%= f.submit "投稿", class: 'btn btn-outline-primary btn-block' %>
+    </div>
+  </div>
+<% end %>

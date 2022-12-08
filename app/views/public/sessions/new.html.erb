@@ -2,7 +2,7 @@
   <h2 class="mb-5">ログイン</h2>
 
 <%= form_with model: @customer, url: customer_session_path do |f| %>
-  <div class="m-5 row flex-column">
+  <div class="m-5 row">
     <div class="col-12 col-md-8 my-3 mx-auto">
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'メールアドレス' %>
     </div>
@@ -10,13 +10,6 @@
     <div class="col-12 col-md-8 my-3 mx-auto">
       <%= f.password_field :password, autocomplete: "current-password", class: 'form-control', placeholder: 'パスワード' %>
     </div>
-
-    <% if devise_mapping.rememberable? %>
-      <div class="col-12 col-md-8 my-3 mx-auto">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
-      </div>
-    <% end %>
 
     <div class="col-12 col-md-8 my-3 mx-auto">
       <%= f.submit "ログイン", class: 'btn btn-outline-info btn-block' %>
