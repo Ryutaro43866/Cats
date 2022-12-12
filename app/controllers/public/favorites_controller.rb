@@ -1,4 +1,6 @@
 class Public::FavoritesController < ApplicationController
+  before_action :guest_check
+
   def index
     @favorites = Favorite.where(customer_id: current_customer.id).page(params[:page]).per(9)
   end

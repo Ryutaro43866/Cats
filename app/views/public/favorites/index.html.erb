@@ -1,4 +1,8 @@
 <div class="container my-5">
   <h1>いいね一覧</h1>
-  <%= render 'public/favorites/index', favorites: @favorites %>
+  <% if @favorites.exists? %>
+    <%= render 'public/favorites/index', favorites: @favorites %>
+  <% else %>
+    <p class="ml-5">いいねされた投稿はありません</p>
+  <% end %>
 </div>

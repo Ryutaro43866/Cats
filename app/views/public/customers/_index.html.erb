@@ -2,21 +2,31 @@
   <% customers.each do |customers| %>
     <table class="table">
       <tbody>
-        <tr class="">
+        <tr>
           <td class="col-2 align-middle">
             <%= link_to customer_path(customers) do %>
               <%= customers.name %>
             <% end %>
           </td>
           <td class="col-2 align-middle">投稿数：<%= customers.items.where(customer_id: @customer).count %></td>
-          <td class="col-2 align-middle">フォロー数：<%= customers.followings.count %></td>
-          <td class="col-2 align-middle">フォロワー数：<%= customers.followers.count %></td>
+          <td class="col-2 align-middle">
+            <%= link_to customer_followings_path(customers) do %>
+              フォロー数：<%= customers.followings.count %>
+            <% end %>
+          </td>
+          <td class="col-2 align-middle">
+            <%= link_to customer_followers_path(customers) do %>
+              フォロワー数：<%= customers.followers.count %>
+            <% end %>
+          </td>
           <td class="col-2">
             <% if current_customer != customers %>
-              <% if current_customer.following?(customers) %>
-                <%= link_to "フォロー外す", customer_relationships_path(customers.id), class: 'btn btn-outline-primary btn-block', method: :delete %>
-              <% else %>
-                <%= link_to "フォローする", customer_relationships_path(customers.id), class: 'btn btn-outline-primary btn-block', method: :post %>
+              <% if current_customer != Customer.find_by(name: 'guestuser') %>
+                <% if current_customer.following?(customers) %>
+                  <%= link_to "フォロー外す", customer_relationships_path(customers.id), class: 'btn btn-outline-primary btn-block', method: :delete %>
+                <% else %>
+                  <%= link_to "フォローする", customer_relationships_path(customers.id), class: 'btn btn-outline-primary btn-block', method: :post %>
+                <% end %>
               <% end %>
             <% end %>
           </td>

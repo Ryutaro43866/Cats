@@ -1,4 +1,6 @@
 class Public::ItemsController < ApplicationController
+  before_action :guest_check, only: [:new, :edit]
+
   def new
     @item = Item.new
   end
@@ -42,4 +44,5 @@ class Public::ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:image, :title, :introduction)
   end
+
 end

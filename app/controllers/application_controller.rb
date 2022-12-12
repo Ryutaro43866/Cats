@@ -25,4 +25,12 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
+
+  private
+
+  def guest_check
+    if current_customer == Customer.find_by(name: 'guestuser')
+      redirect_to items_path,notice: "このページを見るには会員登録が必要です。"
+    end
+  end
 end
