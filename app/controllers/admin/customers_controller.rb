@@ -1,11 +1,8 @@
-class Public::CustomersController < ApplicationController
-  def index
-    @customers = Customer.page(params[:page]).per(10)
-  end
+class Admin::CustomersController < ApplicationController
+  before_action :authenticate_admin!
 
   def show
     @customer = Customer.find(params[:id])
-    @items = Item.where(customer_id: @customer).page(params[:page]).per(6)
   end
 
   def edit
@@ -13,9 +10,9 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    @customer = current_customer
+    @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      redirect_to customer_path(@customer)
+      redirect_to admin_customer_path(@customer)
     else
       flash[:alert] = "保存できませんでした"
       render :edit

@@ -1,0 +1,22 @@
+<div class="row flex-column">
+  <% customers.each do |customers| %>
+    <table class="table">
+      <tbody>
+        <tr class="">
+          <td class="col-2 align-middle">
+            <%= link_to admin_customer_path(customers) do %>
+              <%= customers.name %>
+            <% end %>
+          </td>
+          <td class="col-2 align-middle">投稿数：<%= customers.items.where(customer_id: @customer).count %></td>
+          <td class="col-2 align-middle">公開ステータス：<%= customers.status_i18n %></td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+</div>
+<div class="row">
+  <div class="col-12 d-flex justify-content-center">
+    <%= paginate customers, theme: 'bootstrap-5' %>
+  </div>
+</div>

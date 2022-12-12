@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :authenticate_customer!, except: [:top, :about]
 
 
   def after_sign_in_path_for(resource)
@@ -7,7 +8,7 @@ class ApplicationController < ActionController::Base
       when Customer
         items_path
       when Admin
-        admin_path
+        admin_root_path
     end
   end
 

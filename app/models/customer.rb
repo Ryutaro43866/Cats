@@ -16,6 +16,9 @@ class Customer < ApplicationRecord
 
   enum status: { item_release: true, item_private: false }
 
+  validates :name, presence: true
+  validates :email, presence: true
+
   def self.guest
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64

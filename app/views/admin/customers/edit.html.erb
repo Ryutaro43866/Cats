@@ -1,5 +1,5 @@
 <div class="container my-5">
-  <h1>会員編集</h1>
+  <h1><%= @customer.name %>さんのユーザー情報編集</h1>
 
   <div class="row">
     <div>
@@ -7,7 +7,7 @@
     </div>
   </div>
 
-  <%= form_with model: @customer, url: customer_session_path do |f| %>
+  <%= form_with model: @customer, url: admin_session_path do |f| %>
     <div class="m-5 row">
       <div class="col-12 col-md-8 my-3 mx-auto">
         <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control', placeholder: 'ユーザー名' %>

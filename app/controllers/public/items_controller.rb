@@ -14,7 +14,8 @@ class Public::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.page(params[:page]).per(9)
+    customer = Customer.where(status: true)
+    @items = Item.where(customer_id: customer).page(params[:page]).per(9)
   end
 
   def show

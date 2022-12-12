@@ -11,6 +11,7 @@
       <p>投稿数：<%= @customer.items.where(customer_id: @customer).count %></p>
       <p>フォロー数：<%= @customer.followings.count %></p>
       <p>フォロワー数：<%= @customer.followers.count %></p>
+      <p>公開ステータス：<%= @customer.status_i18n %></p>
     </div>
   </div>
 
@@ -31,5 +32,13 @@
 
 <div class="container my-5">
   <h1><%= @customer.name %>さんの投稿一覧</h1>
-  <%= render 'public/items/index', items: @items %>
+  <% if current_customer == @customer %>
+    <%= render 'public/items/index', items: @items %>
+  <% else %>
+    <% if @customer.status == true %>
+      <%= render 'public/items/index', items: @items %>
+    <% else %>
+      <h3 class="text-center">このユーザーの投稿は非公開です</h3>
+    <% end %>
+  <% end %>
 </div>
