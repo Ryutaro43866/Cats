@@ -1,0 +1,19 @@
+<div class="d-flex justify-content-start flex-wrap mx-auto">
+  <% favorites.each do |favorite| %>
+    <%= link_to item_path(favorite.item) do %>
+      <div class="m-3 p-3 border border-light rounded bg-light text-dark">
+        <div class="mb-3">
+          <%= image_tag favorite.item.image, size: "300x200" %>
+        </div>
+        <p><%= favorite.item.title %></p>
+        <p>いいね：<%= favorite.item.favorites.count %></p>
+        <p><%= favorite.item.created_at.strftime('%Y/%m/%d') %></p>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<div class="row">
+  <div class="col-12 d-flex justify-content-center">
+    <%= paginate favorites, theme: 'bootstrap-5' %>
+  </div>
+</div>

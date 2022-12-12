@@ -1,11 +1,72 @@
-<div class="container">
+<div class="container my-5">
   <h1>投稿詳細</h1>
   <div class="row">
-    <div>
-      <p><%= @customer.name %></p>
-      <p><%= @item.title %></p>
-      <p><%= @item.introduction %></p>
+    <div class="mx-auto">
+      <h4>
+        <%= link_to customer_path(@item.customer) do %>
+          <%= @item.customer.name %>
+        <% end %>
+      </h4>
+      <div class="mb-3"><%= image_tag @item.image, size: "650x400" %></div>
+      <h3 class="mb-3"><%= @item.title %></h3>
+      <h4 class="mb-3"><%= @item.introduction %></h4>
+
+      <p>
+        <% if @item.favorited_by?(current_customer) %>
+          <p>
+            <%= link_to item_favorites_path(@item), method: :delete do %>
+              ♥<%= @item.favorites.count %> いいね
+            <% end %>
+          </p>
+        <% else %>
+          <p>
+            <%= link_to item_favorites_path(@item), method: :post do %>
+              ♡<%= @item.favorites.count %> いいね
+            <% end %>
+          </p>
+        <% end %>
+      </p>
+
       <p><%= @item.created_at.strftime('%Y/%m/%d') %></p>
     </div>
+  </div>
+
+  <div class="d-flex">
+    <div class="col-3 mx-auto">
+      <% if current_customer == @item.customer %>
+        <%= link_to '編集', edit_item_path(@item), class: 'btn btn-success btn-block' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container mb-5">
+  <h2>コメント</h2>
+
+  <%= form_with model: [@item, @item_comment] do |f| %>
+    <div class="row">
+      <div class="d-flex justify-content-between p-4 col-7 border border-light rounded bg-light mx-auto align-items-end">
+        <div class="col-8">
+          <%= f.text_area :comment, class: 'form-control', placeholder: "コメントをここに" %>
+        </div>
+        <div class="col-3 text-center">
+          <%= f.submit "送信", class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <% @item.item_comments.each do |item_comment| %>
+    <div class="d-flex align-items-start mx-auto col-7 my-2 py-1 border-bottom">
+      <div class="col-3"><%= item_comment.customer.name %></div>
+      <div class="col-7 text-break"><%= item_comment.comment %></div>
+      <div class="col-2">
+        <% if item_comment.customer == current_customer %>
+          <%= link_to '削除', item_item_comment_path(item_comment.item,item_comment), class: 'btn btn-danger', method: :delete, "data-confirm" => "本当に削除しますか？" %>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
   </div>
 </div>

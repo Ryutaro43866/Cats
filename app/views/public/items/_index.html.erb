@@ -1,0 +1,19 @@
+<div class="d-flex justify-content-start flex-wrap">
+  <% items.each do |item| %>
+    <%= link_to item_path(item) do %>
+      <div class="m-3 p-3 border border-light rounded bg-light text-dark">
+        <div class="mb-3">
+          <%= image_tag item.image, size: "300x200" %>
+        </div>
+        <p><%= item.title %></p>
+        <p>いいね：<%= item.favorites.count %></p>
+        <p><%= item.created_at.strftime('%Y/%m/%d') %></p>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<div class="row">
+  <div class="col-12 d-flex justify-content-center">
+    <%= paginate items, theme: 'bootstrap-5' %>
+  </div>
+</div>

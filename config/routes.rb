@@ -14,16 +14,17 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   scope module: :public do
     resources :items do
-      resource :favorites, only: [:index, :create, :destroy]
+      resource :favorites, only: [:create, :destroy]
       resources :item_comments, only: [:create, :destroy]
     end
 
-    resources :customers, only: [:show, :edit, :update] do
+    resources :customers, only: [:index, :show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
     end
 
+    resources :favorites, only: [:index]
     get '/customers/unsubscribe' => 'customers#unsubscribe'
     patch '/customers/withdraw' => 'customers#withdraw'
     get '/search', to: 'searches#search'

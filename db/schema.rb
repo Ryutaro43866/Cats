@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2022_12_08_031041) do
     t.datetime "remember_created_at"
     t.string "name"
     t.boolean "is_deleted", default: false
-    t.boolean "status", default: false
+    t.boolean "status", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -96,8 +96,8 @@ ActiveRecord::Schema.define(version: 2022_12_08_031041) do
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.integer "folower_id"
-    t.integer "folowed_id"
+    t.integer "follower_id"
+    t.integer "followed_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

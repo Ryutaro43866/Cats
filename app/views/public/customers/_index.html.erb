@@ -1,0 +1,32 @@
+<div class="row flex-column">
+  <% customers.each do |customers| %>
+    <table class="table">
+      <tbody>
+        <tr class="">
+          <td class="col-2 align-middle">
+            <%= link_to customer_path(customers) do %>
+              <%= customers.name %>
+            <% end %>
+          </td>
+          <td class="col-2 align-middle">投稿数：<%= customers.items.where(customer_id: @customer).count %></td>
+          <td class="col-2 align-middle">フォロー数：<%= customers.followings.count %></td>
+          <td class="col-2 align-middle">フォロワー数：<%= customers.followers.count %></td>
+          <td class="col-2">
+            <% if current_customer != customers %>
+              <% if current_customer.following?(customers) %>
+                <%= link_to "フォロー外す", customer_relationships_path(customers.id), class: 'btn btn-outline-primary btn-block', method: :delete %>
+              <% else %>
+                <%= link_to "フォローする", customer_relationships_path(customers.id), class: 'btn btn-outline-primary btn-block', method: :post %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+</div>
+<div class="row">
+  <div class="col-12 d-flex justify-content-center">
+    <%= paginate customers, theme: 'bootstrap-5' %>
+  </div>
+</div>

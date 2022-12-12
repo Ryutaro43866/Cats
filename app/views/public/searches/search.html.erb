@@ -1,0 +1,8 @@
+<div class="container my-5">
+  <h1>(<%= params[:word] %>)一覧</h1>
+  <% if @range == "タイトル" %>
+    <%= render '/public/items/index', items: @items %>
+  <% else %>
+    <%= render 'public/customers/index', customers: @customers %>
+  <% end %>
+</div>

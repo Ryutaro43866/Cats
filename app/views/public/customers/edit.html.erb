@@ -1,0 +1,26 @@
+<div class="container my-5">
+  <h1>会員編集</h1>
+
+  <%= form_with model: @customer, url: customer_session_path do |f| %>
+    <div class="m-5 row">
+      <div class="col-12 col-md-8 my-3 mx-auto">
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control', placeholder: 'ユーザー名' %>
+      </div>
+
+      <div class="col-12 col-md-8 my-3 mx-auto">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'メールアドレス' %>
+      </div>
+
+      <div class="col-12 col-md-8 my-3 mx-auto">
+        <%= f.radio_button :status, 'item_release' %>
+        <%= f.label :status, '公開' %>
+        <%= f.radio_button :status, 'item_private' %>
+        <%= f.label :status, '非公開' %>
+      </div>
+
+      <div class="col-12 col-md-8 my-3 mx-auto">
+        <%= f.submit "編集", class: 'btn btn-outline-info btn-block' %>
+      </div>
+    </div>
+  <% end %>
+</div>

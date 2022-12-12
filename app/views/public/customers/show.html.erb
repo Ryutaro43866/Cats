@@ -1,0 +1,35 @@
+<div class="container my-5">
+  <% if @customer == current_customer %>
+    <h1>マイページ</h1>
+  <% else %>
+    <h1><%= @customer.name %>さんのページ</h1>
+  <% end %>
+
+  <div class="row">
+    <div class="mx-5 col-9">
+      <p>ユーザー名：<%= @customer.name %></p>
+      <p>投稿数：<%= @customer.items.where(customer_id: @customer).count %></p>
+      <p>フォロー数：<%= @customer.followings.count %></p>
+      <p>フォロワー数：<%= @customer.followers.count %></p>
+    </div>
+  </div>
+
+  <div class="d-flex">
+    <div class="col-3 mx-auto">
+      <% if current_customer == @customer %>
+        <%= link_to '編集', edit_customer_path(@customer), class: 'btn btn-success btn-block' %>
+      <% else %>
+        <% if current_customer.following?(@customer) %>
+          <%= link_to "フォロー外す", customer_relationships_path(@customer.id), class: 'btn btn-outline-primary btn-block', method: :delete %>
+        <% else %>
+          <%= link_to "フォローする", customer_relationships_path(@customer.id), class: 'btn btn-outline-primary btn-block', method: :post %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container my-5">
+  <h1><%= @customer.name %>さんの投稿一覧</h1>
+  <%= render 'public/items/index', items: @items %>
+</div>

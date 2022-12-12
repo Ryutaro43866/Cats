@@ -14,25 +14,31 @@ class Public::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all
+    @items = Item.page(params[:page]).per(9)
   end
 
   def show
     @item = Item.find(params[:id])
-    @customer = Customer.find(@item.customer_id)
+    @item_comment = ItemComment.new
   end
 
   def edit
-
+    @item = Item.find(params[:id])
   end
 
   def update
-
+    @item = Item.find(params[:id])
+    @item.customer_id = current_customer.id
+    if @item.update(item_params)
+      redirect_to item_path(@item.id), notice: '編集に成功しました'
+    else
+      render :edit
+    end
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:item_image, :title, :introduction)
+    params.require(:item).permit(:image, :title, :introduction)
   end
 end

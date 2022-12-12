@@ -1,14 +1,4 @@
 <div class="container my-5">
   <h1>投稿一覧</h1>
-  <div class="row">
-    <% @items.each do |item| %>
-      <%= link_to item_path(item.id) do %>
-        <div>
-          <%= item.item_image %>
-          <p><%= item.title %></p>
-          <p><%= item.created_at.strftime('%Y/%m/%d') %></p>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+  <%= render 'public/items/index', items: @items %>
 </div>

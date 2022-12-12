@@ -1,0 +1,6 @@
+ja:
+  enums:
+    customer:
+      status:
+        item_release: "公開"
+        item_private: "非公開"
