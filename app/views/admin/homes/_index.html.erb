@@ -10,6 +10,13 @@
           </td>
           <td class="col-2 align-middle">投稿数：<%= customers.items.where(customer_id: @customer).count %></td>
           <td class="col-2 align-middle">公開ステータス：<%= customers.status_i18n %></td>
+          <td class="col-2 align-middle">
+            <% if customers.is_deleted == false %>
+              会員ステータス：有効
+            <% elsif %>
+              会員ステータス：退会
+            <% end %>
+          </td>
         </tr>
       </tbody>
     </table>

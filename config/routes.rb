@@ -32,8 +32,8 @@ Rails.application.routes.draw do
     end
 
     resources :favorites, only: [:index]
-    get '/customers/unsubscribe' => 'customers#unsubscribe'
-    patch '/customers/withdraw' => 'customers#withdraw'
+    get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    patch '/customers/:id/withdraw' => 'customers#withdraw', as: 'withdraw'
     get '/search', to: 'searches#search'
 
     devise_scope :customer do

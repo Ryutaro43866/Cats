@@ -7,6 +7,13 @@
       <p>メールアドレス：<%= @customer.email %></p>
       <p>投稿数：<%= @customer.items.where(customer_id: @customer).count %></p>
       <p>公開ステータス：<%= @customer.status_i18n %></p>
+      <p>
+        <% if @customer.is_deleted == false %>
+          会員ステータス：有効
+        <% elsif %>
+          会員ステータス：退会
+        <% end %>
+      </p>
     </div>
   </div>
 

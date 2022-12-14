@@ -4,3 +4,7 @@ ja:
       status:
         item_release: "公開"
         item_private: "非公開"
+
+      is_deleted:
+        leave: "退会"
+        active: "有効"

@@ -7,7 +7,7 @@
     </div>
   </div>
 
-  <%= form_with model: @customer, url: admin_session_path do |f| %>
+  <%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
     <div class="m-5 row">
       <div class="col-12 col-md-8 my-3 mx-auto">
         <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control', placeholder: 'ユーザー名' %>
@@ -17,15 +17,24 @@
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'メールアドレス' %>
       </div>
 
-      <div class="col-12 col-md-8 my-3 mx-auto">
-        <%= f.radio_button :status, 'item_release' %>
-        <%= f.label :status, '公開' %>
-        <div class="ml-3">すべての人に投稿が表示されます</div>
+      <div class="col-12 col-md-7 my-3 mx-auto border">
+        <div>
+          <%= f.radio_button :status, 'item_release' %>
+          <%= f.label :status, '公開' %>
+          <div class="ml-3">すべての人に投稿が表示されます</div>
+        </div>
+        <div>
+          <%= f.radio_button :status, 'item_private' %>
+          <%= f.label :status, '非公開' %>
+          <div class="ml-3">あなただけに投稿が表示されます</div>
+        </div>
       </div>
-      <div class="col-12 col-md-8 mb-3 mx-auto">
-        <%= f.radio_button :status, 'item_private' %>
-        <%= f.label :status, '非公開' %>
-        <div class="ml-3">あなただけに投稿が表示されます</div>
+
+      <div class="col-12 col-md-7 mb-3 mx-auto border">
+        <%= f.radio_button :is_deleted, 'false' %>
+        <%= f.label :is_deleted, '有効' %>
+        <%= f.radio_button :is_deleted, 'true' %>
+        <%= f.label :is_deleted, '退会' %>
       </div>
 
       <div class="col-12 col-md-8 my-3 mx-auto">
