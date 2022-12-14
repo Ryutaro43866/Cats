@@ -1,0 +1,13 @@
+<div class="row">
+  <% item.item_comments.each do |item_comment| %>
+    <div class="d-flex align-items-start mx-auto col-7 my-2 py-1 border-bottom">
+      <div class="col-3"><%= item_comment.customer.name %></div>
+      <div class="col-7 text-break"><%= item_comment.comment %></div>
+      <div class="col-2">
+        <% if item_comment.customer == current_customer %>
+          <%= link_to '削除', item_item_comment_path(item_comment.item,item_comment), class: 'btn btn-danger', method: :delete, remote: true, "data-confirm" => "本当に削除しますか？" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

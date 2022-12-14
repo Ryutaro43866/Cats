@@ -1,0 +1,12 @@
+<%= form_with(model: [item, item_comment], local: false) do |f| %>
+  <div class="row">
+    <div class="d-flex justify-content-between p-4 col-7 border border-light rounded bg-light mx-auto align-items-end">
+      <div class="col-8">
+        <%= f.text_area :comment, class: 'form-control', placeholder: "コメントをここに" %>
+      </div>
+      <div class="col-3 text-center">
+        <%= f.submit "送信", class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+<% end %>
