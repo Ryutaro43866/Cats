@@ -1,8 +1,9 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
+  before_action :guest_check, except: [:index]
 
   def index
-    @customers = Customer.page(params[:page]).per(10)
+    @customers = Customer.where.not(name: 'guestuser').page(params[:page]).per(10)
   end
 
   def show

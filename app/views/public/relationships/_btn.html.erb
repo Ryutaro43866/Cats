@@ -1,0 +1,5 @@
+<% if current_customer.following?(customers) %>
+  <%= link_to "フォロー外す", customer_relationships_path(customers), class: 'btn btn-outline-primary btn-block', method: :delete, remote: true %>
+<% else %>
+  <%= link_to "フォローする", customer_relationships_path(customers), class: 'btn btn-outline-primary btn-block', method: :post, remote: true %>
+<% end %>

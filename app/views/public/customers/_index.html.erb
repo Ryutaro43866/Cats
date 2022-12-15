@@ -8,25 +8,27 @@
               <%= customers.name %>
             <% end %>
           </td>
-          <td class="col-2 align-middle">投稿数：<%= customers.items.where(customer_id: @customer).count %></td>
+          <td class="col-2 align-middle">投稿数：<%= customers.items.where(customer_id: customers.id).count %></td>
           <td class="col-2 align-middle">
             <%= link_to customer_followings_path(customers) do %>
-              フォロー数：<%= customers.followings.count %>
+              <div class="followings-count-<%= customers.id %>">
+                <%= render 'public/relationships/followings_count', customers: customers %>
+              </div>
             <% end %>
           </td>
           <td class="col-2 align-middle">
             <%= link_to customer_followers_path(customers) do %>
-              フォロワー数：<%= customers.followers.count %>
+              <div class="followers-count-<%= customers.id %>">
+                <%= render 'public/relationships/followers_count', customers: customers %>
+              </div>
             <% end %>
           </td>
           <td class="col-2">
-            <% if current_customer != customers %>
-              <% if current_customer != Customer.find_by(name: 'guestuser') %>
-                <% if current_customer.following?(customers) %>
-                  <%= link_to "フォロー外す", customer_relationships_path(customers.id), class: 'btn btn-outline-primary btn-block', method: :delete %>
-                <% else %>
-                  <%= link_to "フォローする", customer_relationships_path(customers.id), class: 'btn btn-outline-primary btn-block', method: :post %>
-                <% end %>
+            <% if current_customer != Customer.find_by(name: 'guestuser') %>
+              <% if current_customer != customers %>
+                <div class="follow-btn-<%= customers.id %>">
+                  <%= render 'public/relationships/btn', customers: customers %>
+                </div>
               <% end %>
             <% end %>
           </td>

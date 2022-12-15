@@ -1,0 +1,5 @@
+$('.follow-btn-<%= @customer.id %>').html("<%= j(render 'public/relationships/btn', customers: @customer )%>");
+$('.followings-count-<%= @customer.id %>').html("<%= j(render 'public/relationships/followings_count', customers: @customer )%>");
+$('.followers-count-<%= @customer.id %>').html("<%= j(render 'public/relationships/followers_count', customers: @customer )%>");
+$('#follow-btn').html("<%= j(render 'public/relationships/btn', customers: @customer )%>");
+$('#followers-count').html("<%= j(render 'public/relationships/followers_count', customers: @customer )%>");

@@ -9,8 +9,10 @@
     <div class="mx-5 col-9">
       <p>ユーザー名：<%= @customer.name %></p>
       <p>投稿数：<%= @customer.items.where(customer_id: @customer).count %></p>
-      <p>フォロー数：<%= @customer.followings.count %></p>
-      <p>フォロワー数：<%= @customer.followers.count %></p>
+      <p id="followings-count">
+        <%= render 'public/relationships/followings_count', customers: @customer %>
+      </p>
+      <p><%= render 'public/relationships/followers_count', customers: @customer %></p>
       <p>公開ステータス：<%= @customer.status_i18n %></p>
     </div>
   </div>
@@ -20,11 +22,9 @@
       <% if current_customer == @customer %>
         <%= link_to '編集', edit_customer_path(@customer), class: 'btn btn-success btn-block' %>
       <% else %>
-        <% if current_customer.following?(@customer) %>
-          <%= link_to "フォロー外す", customer_relationships_path(@customer.id), class: 'btn btn-outline-primary btn-block', method: :delete %>
-        <% else %>
-          <%= link_to "フォローする", customer_relationships_path(@customer.id), class: 'btn btn-outline-primary btn-block', method: :post %>
-        <% end %>
+        <div id="follow-btn">
+          <%= render 'public/relationships/btn', customers: @customer %>
+        </div>
       <% end %>
     </div>
   </div>
@@ -33,12 +33,25 @@
 <div class="container my-5">
   <h1><%= @customer.name %>さんの投稿一覧</h1>
   <% if current_customer == @customer %>
-    <%= render 'public/items/index', items: @items %>
-  <% else %>
-    <% if @customer.status == true %>
+
+    <% if @customer.items.exists? %>
       <%= render 'public/items/index', items: @items %>
     <% else %>
-      <h3 class="text-center">このユーザーの投稿は非公開です</h3>
+      <h3 class="text-center">このユーザーの投稿はありません</h3>
+    <% end %>
+
+  <% else %>
+
+    <% if @customer.items.exists? %>
+
+      <% if @customer.status == 'item_release' %>
+        <%= render 'public/items/index', items: @items %>
+      <% else %>
+        <h3 class="text-center">このユーザーの投稿は非公開です</h3>
+      <% end %>
+
+    <% else %>
+      <h3 class="text-center">このユーザーの投稿はありません</h3>
     <% end %>
   <% end %>
 </div>
