@@ -1,69 +1,83 @@
-<header class="sticky-top">
+<header class="sticky-top shadow">
   <nav class="navbar navbar-dark">
     <div class="container">
+      <!--ロゴ-->
       <% if customer_signed_in? %>
-
         <a class="navbar-brand" href="/items"><span>CATS</span></a>
-        <%= render '/layouts/search' %>
       <% elsif admin_signed_in? %>
         <a class="navbar-brand" href="/admin/"><span>CATS</span></a>
       <% else %>
         <a class="navbar-brand" href="/"><span>CATS</span></a>
       <% end %>
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
+
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
+
+      <% if customer_signed_in? %>
+        <div class="my-3 d-flex justify-content-end">
+          <%= render '/layouts/search' %>
+        </div>
+      <% end %>
+
+        <ul class="navbar-nav">
         <% if customer_signed_in? %>
-          <li>
+          <li class="border-top">
             <%= link_to customer_path(current_customer.id), class: 'nav-link text-light' do %>
               マイページ
             <% end %>
           </li>
-          <li>
+          <li class="border-top">
             <%= link_to favorites_path, class: 'nav-link text-light' do %>
-              いいね
+              いいね一覧
             <% end %>
           </li>
-          <li>
+          <li class="border-top">
             <%=  link_to customers_path,class: 'nav-link text-light' do %>
               ユーザー一覧
             <% end %>
           </li>
-          <li>
+          <li class="border-top">
             <%=  link_to items_path,class: 'nav-link text-light' do %>
               投稿一覧
             <% end %>
           </li>
-          <li>
-            <%=  link_to new_item_path ,class: 'nav-link text-light' do %>
-              投稿フォーム
+          <li class="border-top">
+            <%=  link_to customer_followings_path(current_customer) ,class: 'nav-link text-light' do %>
+              フォロー一覧
             <% end %>
           </li>
-          <li>
+          <li class="border-top">
+            <%=  link_to customer_followers_path(current_customer) ,class: 'nav-link text-light' do %>
+              フォロワー一覧
+            <% end %>
+          </li>
+          <li class="border-top">
             <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light' do %>
               ログアウト
             <% end %>
           </li>
         <% elsif admin_signed_in? %>
-          <li>
+          <li class="border-top">
             <%=  link_to admin_root_path,class: 'nav-link text-light' do %>
               ユーザー一覧
             <% end %>
           </li>
-          <li>
+          <li class="border-top">
             <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
               ログアウト
             <% end %>
           </li>
         <% else %>
-          <li>
+          <li class="border-top mt-3">
             <%= link_to root_path,class: 'nav-link text-light' do %>
               Home
             <% end %>
           </li>
-          <li>
+          <li class="border-top">
             <%= link_to about_path,class: 'nav-link text-light' do %>
               About
             <% end %>

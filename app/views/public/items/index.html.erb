@@ -1,4 +1,10 @@
 <div class="container my-5">
-  <h1>投稿一覧</h1>
+  <div class="d-flex justify-content-between">
+    <h1>投稿一覧</h1>
+    <h3 class="shadow rounded-circle text-center" style="width:3rem;height:3rem;">
+      <%= link_to '＋', new_item_path, class: 'text-secondary align-middle text-decoration-none' %>
+    </h3>
+  </div>
+
   <%= render 'public/items/index', items: @items %>
 </div>

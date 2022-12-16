@@ -44,9 +44,9 @@ class Customer < ApplicationRecord
 
   def self.search(search)
     if search != ""
-      Customer.where(['name LIKE(?)', "%#{search}%"])
+      Customer.where.not(name: 'guestuser').where(['name LIKE(?)', "%#{search}%"])
     else
-      Customer.all
+      Customer.where.not(name: 'guestuser')
     end
   end
 end

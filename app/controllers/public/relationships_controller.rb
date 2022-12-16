@@ -1,4 +1,7 @@
 class Public::RelationshipsController < ApplicationController
+  before_action :authenticate_customer!
+  before_action :guest_check
+
   def create
     @customer = Customer.find(params[:customer_id])
     current_customer.follow(params[:customer_id])

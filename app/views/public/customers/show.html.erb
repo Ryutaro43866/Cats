@@ -9,10 +9,16 @@
     <div class="mx-5 col-9">
       <p>ユーザー名：<%= @customer.name %></p>
       <p>投稿数：<%= @customer.items.where(customer_id: @customer).count %></p>
-      <p id="followings-count">
-        <%= render 'public/relationships/followings_count', customers: @customer %>
-      </p>
-      <p><%= render 'public/relationships/followers_count', customers: @customer %></p>
+      <%= link_to customer_followings_path(@customer) do %>
+        <p>
+          <%= render 'public/relationships/followings_count', customers: @customer %>
+        </p>
+      <% end %>
+      <%= link_to customer_followers_path(@customer) do %>
+        <p id="followers-count">
+          <%= render 'public/relationships/followers_count', customers: @customer %>
+        </p>
+      <% end %>
       <p>公開ステータス：<%= @customer.status_i18n %></p>
     </div>
   </div>

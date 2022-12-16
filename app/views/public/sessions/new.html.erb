@@ -2,7 +2,7 @@
   <h2 class="mb-5">ログイン</h2>
 
   <%= form_with model: @customer, url: customer_session_path do |f| %>
-    <div class="m-5 row">
+    <div class="m-5 row bg-light shadow">
       <div class="col-12 col-md-8 my-3 mx-auto">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'メールアドレス' %>
       </div>

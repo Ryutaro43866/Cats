@@ -1,9 +1,9 @@
-<div class="d-flex justify-content-start flex-wrap">
+<div class="d-md-flex justify-content-start flex-wrap">
   <% items.each do |item| %>
     <%= link_to item_path(item) do %>
-      <div class="m-3 p-3 border border-light rounded bg-light text-dark">
-        <div class="mb-3">
-          <%= image_tag item.image, size: "300x200" %>
+      <div class="m-3 p-3 border border-light rounded bg-light text-dark shadow">
+        <div class="mb-3 d-flex justify-content-center">
+          <%= image_tag item.image, class: 'item-index' %>
         </div>
         <p><%= item.title %></p>
         <p>いいね：<%= item.favorites.count %></p>
