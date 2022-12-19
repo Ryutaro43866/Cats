@@ -8,7 +8,7 @@
   </div>
 
   <%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
-    <div class="m-5 row">
+    <div class="m-5 row bg-light shadow">
       <div class="col-12 col-md-8 my-3 mx-auto">
         <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control', placeholder: 'ユーザー名' %>
       </div>
@@ -17,7 +17,7 @@
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'メールアドレス' %>
       </div>
 
-      <div class="col-12 col-md-7 my-3 mx-auto border">
+      <div class="col-12 col-md-7 my-3 mx-auto border bg-white rounded">
         <div>
           <%= f.radio_button :status, 'item_release' %>
           <%= f.label :status, '公開' %>
@@ -30,7 +30,7 @@
         </div>
       </div>
 
-      <div class="col-12 col-md-7 mb-3 mx-auto border">
+      <div class="col-12 col-md-7 mb-3 mx-auto border bg-white rounded">
         <%= f.radio_button :is_deleted, 'false' %>
         <%= f.label :is_deleted, '有効' %>
         <%= f.radio_button :is_deleted, 'true' %>

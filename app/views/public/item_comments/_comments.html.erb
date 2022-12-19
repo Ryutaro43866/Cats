@@ -3,7 +3,7 @@
     <div class="d-md-flex align-items-start mx-auto col-7 my-2 py-1 border-bottom">
       <div class="col-md-3"><%= item_comment.customer.name %></div>
       <div class="col-md-7 text-break"><%= item_comment.comment %></div>
-      <div class="col-md-2">
+      <div class="d-flex justify-content-end col-md-2">
         <% if item_comment.customer == current_customer %>
           <%= link_to '削除', item_item_comment_path(item_comment.item,item_comment), class: 'btn btn-danger', method: :delete, remote: true, "data-confirm" => "本当に削除しますか？" %>
         <% end %>

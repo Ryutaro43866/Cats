@@ -2,7 +2,7 @@
   <h1><%= @customer.name %>さんのユーザー情報詳細</h1>
 
   <div class="row">
-    <div class="mx-5 col-9">
+    <div class="mx-auto col-9">
       <p>ユーザー名：<%= @customer.name %></p>
       <p>メールアドレス：<%= @customer.email %></p>
       <p>投稿数：<%= @customer.items.where(customer_id: @customer).count %></p>
@@ -18,7 +18,7 @@
   </div>
 
   <div class="d-flex">
-    <div class="col-3 mx-auto">
+    <div class="col-5 col-md-3 mx-auto">
       <%= link_to '編集', edit_admin_customer_path(@customer), class: 'btn btn-success btn-block' %>
     </div>
   </div>
