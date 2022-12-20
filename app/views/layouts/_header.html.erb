@@ -31,18 +31,13 @@
             <% end %>
           </li>
           <li class="border-top">
-            <%= link_to favorites_path, class: 'nav-link text-light' do %>
-              いいね一覧
+            <%=  link_to items_path,class: 'nav-link text-light' do %>
+              投稿一覧
             <% end %>
           </li>
           <li class="border-top">
             <%=  link_to customers_path,class: 'nav-link text-light' do %>
               ユーザー一覧
-            <% end %>
-          </li>
-          <li class="border-top">
-            <%=  link_to items_path,class: 'nav-link text-light' do %>
-              投稿一覧
             <% end %>
           </li>
           <li class="border-top">
@@ -53,6 +48,11 @@
           <li class="border-top">
             <%=  link_to customer_followers_path(current_customer) ,class: 'nav-link text-light' do %>
               フォロワー一覧
+            <% end %>
+          </li>
+          <li class="border-top">
+            <%= link_to favorites_path, class: 'nav-link text-light' do %>
+              いいね一覧
             <% end %>
           </li>
           <li class="border-top">

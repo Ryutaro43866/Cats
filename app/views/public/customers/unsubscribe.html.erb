@@ -1,4 +1,4 @@
-<div class="container m-5 text-center">
+<div class="container my-5 text-center">
   <h2 class="mb-5">退会手続き</h2>
   <p>
     退会手続きをすると、全てのサービスがご利用いただけなくなります。<br>
@@ -6,11 +6,11 @@
     本当に退会してよろしいですか？
   </p>
 
-  <div class="mt-5 d-flex justify-content-center">
-    <div class="col-3">
+  <div class="mt-5 d-md-flex justify-content-center">
+    <div class="col-6 col-md-3 mx-auto mx-md-0">
       <%= link_to '退会する', withdraw_path(@customer), method: :patch, class: 'btn btn-danger btn-block' %>
     </div>
-    <div class="col-3">
+    <div class="col-6 col-md-3 mx-auto mx-md-0 mt-4 mt-md-0">
       <%= link_to '退会しない', customer_path(@customer), class: 'btn btn-success btn-block' %>
     </div>
   </div>

@@ -10,7 +10,7 @@ class Public::ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.customer_id = current_customer.id
     if @item.save
-      redirect_to items_path, notice: '投稿に成功しました'
+      redirect_to item_path(@item), notice: '投稿に成功しました'
     else
       render :new
     end
@@ -18,7 +18,7 @@ class Public::ItemsController < ApplicationController
 
   def index
     customer = Customer.where(status: true)
-    @items = Item.where(customer_id: customer).page(params[:page]).per(9)
+    @items = Item.where(customer_id: customer).order(created_at: :desc).page(params[:page]).per(9)
   end
 
   def show

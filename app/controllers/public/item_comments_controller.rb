@@ -21,9 +21,4 @@ class Public::ItemCommentsController < ApplicationController
     params.require(:item_comment).permit(:comment)
   end
 
-  def guest?
-    if current_customer == Customer.find_by(name: 'guestuser')
-      redirect_to item_path(params[:item_id]),notice: "コメントするには会員登録が必要です。"
-    end
-  end
 end
