@@ -40,6 +40,13 @@ class Public::ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+    @item.customer_id = current_customer.id
+    @item.destroy
+    redirect_to items_path, notice: '削除に成功しました'
+  end
+
   private
 
   def item_params
