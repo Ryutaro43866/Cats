@@ -8,3 +8,12 @@ ja:
       is_deleted:
         leave: "退会"
         active: "有効"
+
+  activerecord:
+    models:
+      customer: "ユーザー"
+    attributes:
+      customer:
+        name: "ユーザー名"
+        email: "メールアドレス"
+        password: "パスワード"
