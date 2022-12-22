@@ -4,15 +4,15 @@
       <!--ロゴ-->
       <% if customer_signed_in? %>
         <a class="navbar-brand" href="/items">
-          <img src="/assets/logo.png" height="40px" width="40px"><span class="logo align-bottom">CATS</span>
+          <%= image_tag asset_path("logo.png"), size: '40x40' %><span class="logo align-bottom">CATS</span>
         </a>
       <% elsif admin_signed_in? %>
         <a class="navbar-brand align-items-center" href="/admin/">
-          <img src="/assets/logo.png" height="40px" width="40px"><span class="logo align-bottom">CATS</span>
+          <%= image_tag asset_path("logo.png"), size: '40x40' %><span class="logo align-bottom">CATS</span>
         </a>
       <% else %>
         <a class="navbar-brand" href="/">
-          <img src="/assets/logo.png" height="40px" width="40px"><span class="logo align-bottom">CATS</span>
+          <%= image_tag asset_path("logo.png"), size: '40x40' %><span class="logo align-bottom">CATS</span>
         </a>
       <% end %>
 
