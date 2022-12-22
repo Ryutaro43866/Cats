@@ -1,8 +1,16 @@
 <div class="container my-5">
   <h1>(<%= params[:word] %>)一覧</h1>
   <% if @range == "タイトル" %>
-    <%= render '/public/items/index', items: @items %>
+    <% if @items.exists? %>
+      <%= render '/public/items/index', items: @items %>
+    <% else %>
+      <h3 class="text-center">投稿はありません</h3>
+    <% end %>
   <% else %>
-    <%= render 'public/customers/index', customers: @customers %>
+    <% if @customers.exists? %>
+      <%= render 'public/customers/index', customers: @customers %>
+    <% else %>
+      <h3 class="text-center">ユーザーはいません</h3>
+    <% end %>
   <% end %>
 </div>

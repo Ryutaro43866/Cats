@@ -22,13 +22,19 @@
       <%= f.text_area :introduction, class: 'form-control', placeholder: '説明' %>
     </div>
 
-    <div class="col-12 col-md-8 my-3 mx-auto">
-      <% if Item.exists?(item.id) %>
+
+    <% if Item.exists?(item.id) %>
+      <div class="col-12 col-md-8 my-3 mx-auto">
         <%= f.submit "編集", class: 'btn btn-outline-success btn-block' %>
+      </div>
+      <div class="col-12 col-md-8 my-3 mx-auto">
         <%= link_to '削除', item_path(@item), method: :delete, class: 'btn btn-outline-danger btn-block', "data-confirm" => "本当に削除しますか？" %>
-      <% else %>
+      </div>
+    <% else %>
+      <div class="col-12 col-md-8 my-3 mx-auto">
         <%= f.submit "投稿", class: 'btn btn-outline-primary btn-block' %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
+
   </div>
 <% end %>

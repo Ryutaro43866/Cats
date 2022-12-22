@@ -3,11 +3,17 @@
     <div class="container">
       <!--ロゴ-->
       <% if customer_signed_in? %>
-        <a class="navbar-brand" href="/items"><span>CATS</span></a>
+        <a class="navbar-brand" href="/items">
+          <img src="/assets/logo.png" height="40px" width="40px"><span class="logo align-bottom">CATS</span>
+        </a>
       <% elsif admin_signed_in? %>
-        <a class="navbar-brand" href="/admin/"><span>CATS</span></a>
+        <a class="navbar-brand align-items-center" href="/admin/">
+          <img src="/assets/logo.png" height="40px" width="40px"><span class="logo align-bottom">CATS</span>
+        </a>
       <% else %>
-        <a class="navbar-brand" href="/"><span>CATS</span></a>
+        <a class="navbar-brand" href="/">
+          <img src="/assets/logo.png" height="40px" width="40px"><span class="logo align-bottom">CATS</span>
+        </a>
       <% end %>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

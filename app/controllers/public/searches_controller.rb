@@ -5,9 +5,10 @@ class Public::SearchesController < ApplicationController
     @range = params[:range]
 
     if @range == "タイトル"
-      @items = Item.search(params[:word]).page(params[:page]).per(9)
+      customer = Customer.where(status: true)
+      @items = Item.where(customer_id: customer).search(params[:word]).page(params[:page]).per(9)
     else
-      @customers = Customer.search(params[:word]).page(params[:page]).per(9)
+      @customers = Customer.where.not(name: 'guestuser').where(is_deleted: false).search(params[:word]).page(params[:page]).per(9)
     end
   end
 end

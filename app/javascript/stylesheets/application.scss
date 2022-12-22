@@ -4,10 +4,15 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Kosugi Maru', sans-serif;
 }
 
 header {
   background-color: orange;
+}
+
+.logo {
+  font-size: 30px;
 }
 
 .navbar-dark .navbar-toggler{
