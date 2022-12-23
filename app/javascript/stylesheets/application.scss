@@ -7,6 +7,13 @@
   font-family: 'Kosugi Maru', sans-serif;
 }
 
+body {
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 60px;
+  box-sizing: border-box;
+}
+
 header {
   background-color: orange;
 }
@@ -43,6 +50,14 @@ button:focus {
 }
 
 .item-index {
+  background-color: #F8F8F8;
+}
+
+.item-index:hover, .plus-bottun:hover {
+  background-color: #CCCCCC;
+}
+
+.item-index-img {
   height: 200px;
   width: 300px;
 }
@@ -54,7 +69,14 @@ button:focus {
 
 footer {
   height: 60px;
+  width: 100%;
+  color: #FFFFFF;
+  display: flex;
+	justify-content: center;
+	align-items: center;
   background-color: black;
+  position: absolute;
+  bottom: 0;
 }
 
 @media screen and (max-width: 768px) {
@@ -107,9 +129,9 @@ footer {
     font-size: 13px;
   }
 
-  .item-index {
+  .item-index-img {
     height: 150px;
-    width: 250px;
+    width: 230px;
   }
 
   .item-show {
