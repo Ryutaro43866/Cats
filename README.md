@@ -20,6 +20,10 @@ Catsとは、猫が好きな人のためのSNSです。具体的には画像を�
 - 猫好きの方々とゆるく交流したい時
 
 ## 設計書
+- テーブル定義書  
+https://docs.google.com/spreadsheets/d/1300II_T7DkxkCudIjgau3cpPu2mgwb4GDFYmsMbc_JE/edit#gid=1373217982
+- アプリケーション詳細設計  
+https://docs.google.com/spreadsheets/d/157GBnioSJpiiBbzASafWfiPTD5Oh_MnvTYL6TlwSnls/edit#gid=549108681
 
 
 ## 開発環境
@@ -28,6 +32,3 @@ Catsとは、猫が好きな人のためのSNSです。具体的には画像を�
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
-
-## 使用素材
- 使用検討中です
