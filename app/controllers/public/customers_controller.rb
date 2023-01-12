@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
-  before_action :is_matching_login_customer, only: [:edit, :update]
+  before_action :is_matching_login_customer, only: [:edit, :update, :unsubscribe, :withdraw]
   before_action :guest_check, except: [:index]
 
   def index
@@ -42,5 +42,5 @@ class Public::CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:name, :email, :status, :is_deleted)
   end
-  
+
 end
