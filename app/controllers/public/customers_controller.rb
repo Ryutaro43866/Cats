@@ -42,11 +42,5 @@ class Public::CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:name, :email, :status, :is_deleted)
   end
-
-  def is_matching_login_customer
-    customer_id = params[:id].to_i
-    unless customer_id == current_customer.id
-      redirect_to items_path
-    end
-  end
+  
 end

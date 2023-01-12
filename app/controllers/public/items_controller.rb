@@ -1,5 +1,6 @@
 class Public::ItemsController < ApplicationController
   before_action :authenticate_customer!
+  before_action :is_matching_login_customer, only: [:edit, :update]
   before_action :guest_check, only: [:new, :edit]
 
   def new

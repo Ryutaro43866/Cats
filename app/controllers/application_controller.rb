@@ -38,4 +38,12 @@ class ApplicationController < ActionController::Base
       redirect_to item_path(params[:item_id]),notice: "この機能を使うには会員登録が必要です。"
     end
   end
+
+  def is_matching_login_customer
+    customer_id = params[:id].to_i
+    unless customer_id == current_customer.id
+      redirect_to items_path
+    end
+  end
+
 end
