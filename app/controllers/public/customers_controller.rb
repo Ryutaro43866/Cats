@@ -4,7 +4,7 @@ class Public::CustomersController < ApplicationController
   before_action :guest_check, except: [:index]
 
   def index
-    @customers = Customer.where.not(name: 'guestuser').where(is_deleted: false).page(params[:page]).per(10)
+    @customers = Customer.page(params[:page]).per(10).hide_guest
   end
 
   def show

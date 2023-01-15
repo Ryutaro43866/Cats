@@ -49,4 +49,8 @@ class Customer < ApplicationRecord
       Customer.all
     end
   end
+
+  def self.hide_guest
+      Customer.where.not(email: 'guest@example.com').where(is_deleted: false)
+  end
 end

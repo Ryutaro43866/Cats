@@ -28,13 +28,13 @@ class ApplicationController < ActionController::Base
   private
 
   def guest_check
-    if current_customer == Customer.find_by(name: 'guestuser')
+    if current_customer == Customer.find_by(email: 'guest@example.com')
       redirect_to items_path,notice: "このページを見るには会員登録が必要です。"
     end
   end
 
   def guest?
-    if current_customer == Customer.find_by(name: 'guestuser')
+    if current_customer == Customer.find_by(email: 'guest@example.com')
       redirect_to item_path(params[:item_id]),notice: "この機能を使うには会員登録が必要です。"
     end
   end

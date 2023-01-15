@@ -18,9 +18,9 @@ class Public::ItemsController < ApplicationController
   end
 
   def index
-    customers = Customer.where(is_deleted: false)
-    customer = Customer.where(status: true)
-    @items = Item.where(customer_id: customer).where(customer_id: customers).order(created_at: :desc).page(params[:page]).per(9)
+    is_deleted = Customer.where(is_deleted: false)
+    status = Customer.where(status: true)
+    @items = Item.where(customer_id: status, customer_id: is_deleted).order(created_at: :desc).page(params[:page]).per(9)
   end
 
   def show
