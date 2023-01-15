@@ -20,7 +20,7 @@ class Public::ItemsController < ApplicationController
   def index
     is_deleted = Customer.where(is_deleted: false)
     status = Customer.where(status: true)
-    @items = Item.where(customer_id: status, customer_id: is_deleted).order(created_at: :desc).page(params[:page]).per(9)
+    @items = Item.where(customer_id: status).where(customer_id: is_deleted).order(created_at: :desc).page(params[:page]).per(9)
   end
 
   def show
