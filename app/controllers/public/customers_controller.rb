@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
-  before_action :is_matching_login_customer, only: [:edit, :update, :unsubscribe, :withdraw]
+  before_action :is_matching_login_customer, only: [:edit, :unsubscribe, :withdraw]
   before_action :guest_check, except: [:index]
 
   def index
@@ -13,6 +13,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
+    @customer = Customer.find(params[:id])
   end
 
   def update

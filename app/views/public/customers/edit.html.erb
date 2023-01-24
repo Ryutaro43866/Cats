@@ -9,6 +9,7 @@
 
   <%= form_with model: @customer, url: customer_session_path do |f| %>
     <div class="m-5 row bg-light shadow">
+      
       <div class="col-12 col-md-8 my-3 mx-auto">
         <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control', placeholder: 'ユーザー名' %>
       </div>
@@ -17,6 +18,7 @@
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'メールアドレス' %>
       </div>
 
+      <!--公開ステータス-->
       <div class="col-12 col-md-8 my-3 mx-auto">
         <%= f.radio_button :status, 'item_release' %>
         <%= f.label :status, '公開' %>
@@ -27,6 +29,7 @@
         <%= f.label :status, '非公開' %>
         <div class="ml-3">あなただけに投稿が表示されます</div>
       </div>
+
 
       <div class="col-12 col-md-8 my-3 mx-auto">
         <%= f.submit "編集", class: 'btn btn-outline-info btn-block' %>
